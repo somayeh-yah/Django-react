@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ================================================
+   DESIGN TOKENS — ALL VARIABLES LIVE HERE
+   ================================================ */
+
+@theme {
+  /* ── BACKGROUNDS ── */
+  --color-background: oklch(0.9973 0.0013 286.38);
+  --color-surface: oklch(0.975 0.007 230);
+  --color-primary: oklch(0.5765 0.1657 259.33);
+  --color-primary-soft: oklch(0.94 0.035 255);
+  --color-primary-hover: oklch(0.52 0.17 259);
+
+  /* ── ACCENT ── */
+  --color-accent-1: oklch(0.7313 0.0509 271.03);
+  --color-accent-2: oklch(0.45 0.12 259);
+
+  /* ── HEADER / SIDEBAR ── */
+  --color-header: oklch(0.259 0.0398 259.33);
+  --color-dark: oklch(0.259 0.0398 259.33);
+
+  /* ── BORDERS ── */
+  --color-br: oklch(0.9484 0.0046 258.33);
+
+  /* ── GRADIENT ── */
+  --color-gradient: linear-gradient(
+    to bottom right,
+    oklch(0.9842 0.0034 247.86),
+    oklch(0.9705 0.0142 254.6),
+    oklch(0.9299 0.0334 272.79)
+  );
+
+  /* ── FEEDBACK ── */
+  --color-error: oklch(59.9% 0.2 27);
+  --color-success: oklch(75.1% 0.18 145);
+  --color-warning: oklch(84.4% 0.17 85);
+
+  /* ── TEXT ── */
+  --color-body: oklch(0.2084 0.0417 266.36);
+  --color-muted: oklch(0.4454 0.043 257.42);
+  --color-secondary: oklch(56.7% 0.004 220.285);
+  --color-hover: oklch(0.9748 0 0);
+  --color-inverted: oklch(0.98 0 0);
+
+  /* ── BUTTONS ── */
+  --color-bt-strong: oklch(0.2718 0.041 260.31);
+  --color-bt-strong-hover: oklch(0.3546 0.041 260.31);
+
+  /* ── ICONS ── */
+  --color-icon: oklch(0.8666 0.0123 247.97);
+  --color-icon-hover: oklch(0.9309 0.0094 242.84);
+
+  /* ── TYPOGRAPHY ── */
+  --font-heading: "Poppins", "Merriweather", "Georgia", serif;
+  --font-sans: "Mona Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+  /* ── LEADING ── */
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* ── TRACKING ── */
+  --tracking-xs: 0.035em;
+  --tracking-sm: 0.05em;
+  --tracking-lg: 0.07em;
+
+  /* ── SPACING ── */
+  --spacing-cols: 1.5rem;
+  --spacing-section: 4rem;
+
+  /* ── SHADOWS ── */
+  --shadow-sm: 0px 3px 10px 0px rgba(31, 31, 31, 0.04);
+  --shadow-md: 0px 3px 10px 0px rgba(31, 31, 31, 0.4);
+}
+
+/* ================================================
+   DARK MODE OVERRIDES
+   ================================================ */
+
+:root.dark {
+  --color-background: oklch(0.2077 0.0694 268.75);
+  --color-surface: oklch(0.2431 0.0768 268.55);
+
+  --color-primary: oklch(0.7313 0.0509 271.03);
+  --color-primary-soft: oklch(94% 0 0);
+  --color-primary-hover: oklch(0.8 0.05 271);
+
+  --color-header: oklch(0.7817 0.1115 245.73);
+  --color-dark: oklch(0.18 0.055 268);
+
+  --color-br: oklch(0.3499 0.0236 258.37);
+
+  --color-gradient: linear-gradient(
+    to bottom right,
+    oklch(0.1288 0.0406 264.7),
+    oklch(25.149% 0.04795 265.931),
+    oklch(17.949% 0.0731 266.243)
+  );
+
+  --color-body: oklch(1 0 0);
+  --color-muted: oklch(0.5542 0.046 257.53);
+  --color-secondary: oklch(56.7% 0.004 220.285);
+
+  --shadow-sm: 0 6px 18px 0 oklch(0.1 0 0 / 0.5);
+  --shadow-md: 0 12px 30px 0 oklch(0.08 0 0 / 0.8);
+}
+
+/* ================================================
+   BASE RESETS & GLOBAL ELEMENTS
+   ================================================ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-sans text-body bg-background min-h-screen;
+  }
+
+  /* Links default to accent color — override per-context with Tailwind utilities */
+  a {
+    @apply no-underline text-accent-2 hover:text-primary transition-colors;
+  }
+
+  /* ────────────────────────────────────────────
+     BUTTONS
+     .button      — outlined ghost (dashboard / forms)
+     .sec-button  — subtle ghost (secondary actions)
+     .btn-primary — solid fill  (main form submit)
+  ──────────────────────────────────────────── */
+
+  .button {
+    @apply inline-flex justify-center items-center gap-2
+           text-pretty md:text-nowrap
+           border border-stone-300 px-5 py-1.5
+           text-sm font-sans font-medium text-body
+           rounded-full shadow-sm cursor-pointer
+           hover:bg-slate-100/50 hover:border
+           focus:outline-none focus:ring-2 focus:ring-white
+           focus:ring-offset-2 focus:ring-offset-slate-900
+           transition-colors tracking-sm;
+  }
+
+  .sec-button {
+    @apply rounded-full border border-slate-200 dark:border-slate-800
+           px-4 py-2 text-sm shadow-sm cursor-pointer
+           hover:bg-slate-100/50 hover:border-slate-200/50
+           focus-visible:outline-2 focus-visible:outline-offset-2
+           transition-colors;
+  }
+
+  /* Solid primary */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-bt-strong hover:bg-bt-strong-hover text-hover hover:text-hover font-semibold py-2.5 px-4 rounded-lg transition-colors text-sm cursor-pointer disabled:opacity-50;
+  }
+
+  /* ────────────────────────────────────────────
+     SEARCH INPUT
+  ──────────────────────────────────────────── */
+
+  .search-input {
+    @apply w-full pl-10 pr-4 py-2.5 mt-1
+           bg-surface border border-slate-200 dark:border-slate-700
+           rounded-full text-body font-sans
+           placeholder:text-muted placeholder:text-sm
+           outline-none focus:outline-none focus:ring-0
+           focus:ring-slate-300 focus:border-slate-300
+           hover:bg-slate-100/50 dark:hover:bg-slate-700
+           transition-all;
+  }
+
+  /* ────────────────────────────────────────────
+     CARD — surface container
+  ──────────────────────────────────────────── */
+
+  .card {
+    @apply bg-surface rounded-xl border border-br shadow-sm w-auto;
+  }
+
+  /* ────────────────────────────────────────────
+     PROFILES
+  ──────────────────────────────────────────── */
+
+  /* Small avatar with ring (e.g. table / header) */
+  .profile {
+    @apply w-8 h-8 rounded-full ring-2 ring-blue-500 object-cover;
+  }
+
+  /* Row wrapper containing avatar + text */
+  .profile-row {
+    @apply relative inline-flex items-center text-center gap-3;
+  }
+
+  /* Larger avatar in profile cards */
+  .profile-avatar {
+    @apply w-12 h-12 rounded-full object-cover
+           border-2 border-gray-100 shadow-xl
+           transition-transform hover:-translate-y-0.5;
+  }
+
+  /* Tooltip that reveals on .peer hover — place right after the trigger element */
+  .profile-tooltip-peer {
+    @apply absolute z-50 pointer-events-none whitespace-nowrap
+           bottom-full left-6 bg-stone-800 text-stone-50
+           text-xs px-2 py-1 rounded-md
+           opacity-0 invisible translate-y-1 transition-all;
+  }
+
+  .peer:hover + .profile-tooltip-peer,
+  .peer:focus-visible + .profile-tooltip-peer,
+  .peer:active + .profile-tooltip-peer {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  /* ────────────────────────────────────────────
+     SWEETALERT2
+     Referenced in alertConfig.js → customClass.title
+  ──────────────────────────────────────────── */
+
+  .sweetAlert {
+    @apply font-sans text-sm;
+  }
+}
+
+/* ================================================
+   UTILITIES
+   ================================================ */
+
+/* Hide scrollbar visually while keeping scroll functionality */
+@utility no-scrollbar {
+  @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+}

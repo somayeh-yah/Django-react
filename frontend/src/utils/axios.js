@@ -1,0 +1,13 @@
+import axios from "axios"
+import API_BASE_URL  from "../constants/baseUrl"
+
+const apiInstance = axios.create({
+    baseURL: API_BASE_URL,
+    timeout: 10000,
+    headers: {
+        "Content-Type": "application/json", //expecting json format
+        Accept: "application/json" //only accepting json format
+    }
+})
+
+export default apiInstance
