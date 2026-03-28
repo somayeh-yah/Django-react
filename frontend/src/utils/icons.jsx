@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   ChevronDown,
   LogIn,
+  LogOut,
   EllipsisVertical,
   GraduationCap,
   Users,
@@ -48,14 +49,16 @@ import {
   X,
   PenLine,
   ChevronUp,
- UserRoundPen,
+  UserRoundPen,
+  Heart,
+  MessageCircleQuestionMark,
 } from "lucide-react";
-
 
 export const icons = {
   loading: <Loader size={25} strokeWidth={1.5} />,
   register: <UserPlus size={25} strokeWidth={1.5} />,
   login: <LogIn size={25} strokeWidth={1.5} />,
+  logout: <LogOut size={20} strokeWidth={1.5} />,
   phone: <Phone size={20} strokeWidth={1.5} />,
   users: <UsersRound size={20} strokeWidth={1.5} />,
   user: <UserRound size={20} strokeWidth={1.5} />,
@@ -71,7 +74,7 @@ export const icons = {
   arrowUp: (
     <ChevronUp ChevronDown strokeWidth={1.5} className="text-slate-4 w-4 h-4" />
   ),
-  dashboardIcon: <LayoutDashboard size={20} strokeWidth={1.5} />,
+  dashboard: <LayoutDashboard size={20} strokeWidth={1.5} />,
   activity: <Activity size={20} strokeWidth={1.5} />,
   zap: <Zap strokeWidth={1.5} className="w-6 h-6 text-white" />,
   chart: <ChartSpline size={20} strokeWidth={1.5} />,
@@ -86,7 +89,9 @@ export const icons = {
   goal: <Goal size={20} strokeWidth={1.5} />,
   close: <X size={20} strokeWidth={1.5} />,
   dec: <PenLine size={15} strokeWidth={1.5} />,
-  profile: <UserRoundPen size={20} strokeWidth={1.5}/>,
+  profile: <UserRoundPen size={20} strokeWidth={1.5} />,
+  heart: <Heart size={20} strokeWidth={1.5} />,
+  qa: <MessageCircleQuestionMark size={20} strokeWidth={1.5} />,
 
   archive: (
     <ArchiveRestore

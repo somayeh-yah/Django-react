@@ -11,6 +11,7 @@ import KpiDetailView from "./views/base/KpiDetailView.jsx";
 import GoalAndVisions from "./views/base/GoalAndVisions.jsx";
 import Profile from "./views/student/Profile.jsx";
 import StudentDashboard from "./views/student/Dashboard.jsx";
+import Courses from "./views/student/Courses.jsx";
 
 function App() {
   return (
@@ -30,6 +31,15 @@ function App() {
             element={
               <PrivateRoute role="student">
                 <StudentDashboard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/student/courses"
+            element={
+              <PrivateRoute role="student">
+                <Courses />
               </PrivateRoute>
             }
           />

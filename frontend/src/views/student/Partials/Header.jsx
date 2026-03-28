@@ -1,10 +1,11 @@
 import { userAuthInformationStore } from "../../../store/auth";
 import { Link } from "react-router-dom";
 import SingleProfile from "../../../components/profileAvatar/SingleProfile";
-function Header() {
+
+export default function Header() {
   const userData = userAuthInformationStore((state) => state.userData);
   return (
-    <div className="hidden md:block card bg-surface px-4 pt-2 pb-4 shadow-sm rounded-xl mb-6 ">
+    <div className="hidden md:block card bg-surface px-4 pt-2 pb-4 shadow-sm rounded-xl mb-4 ">
       <div className="flex items-end justify-between">
         <div className="flex items-center ">
           <div className=" bg-surface border-t p-1 border-slate-200/50 dark:border-slate-700/50 overflow-visible w-full items-center">
@@ -30,5 +31,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;

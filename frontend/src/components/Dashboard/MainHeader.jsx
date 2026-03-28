@@ -30,7 +30,7 @@ export default function MainHeader({ sideBarCollapsed, onToggleSidbar }) {
           </button>
         </div>
 
-        {/* CENTER — Search med dropdown */}
+        {/* CENTER — Search and dropdown */}
         <div className="flex-1 max-w-md mx-8 relative">
           <Search
             placeholder="Search courses, tasks, teams..."
