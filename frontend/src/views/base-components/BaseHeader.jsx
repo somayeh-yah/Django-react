@@ -7,10 +7,10 @@ import { logout } from "../../utils/auth";
 import ThemeToggle from "../../components/ThemeToggle";
 
 const NAV_LINKS = [
-  { to: "/pages/contact-us",   label: "Contact Us",   icon: icons.phone   },
-  { to: "/pages/about-us",     label: "About Us",     icon: icons.users   },
-  { to: "/pages/case-studies", label: "Case Studies", icon: icons.award   },
-  { to: "/pages/pricing",      label: "Pricing",      icon: icons.pricing },
+  { to: "/pages/contact-us", label: "Contact Us", icon: icons.phone },
+  { to: "/pages/about-us", label: "About Us", icon: icons.users },
+  { to: "/pages/case-studies", label: "Case Studies", icon: icons.award },
+  { to: "/pages/pricing", label: "Pricing", icon: icons.pricing },
 ];
 
 function BaseHeader() {
@@ -25,7 +25,9 @@ function BaseHeader() {
 
   // Close mobile menu on Escape key
   useEffect(() => {
-    const onKeyDown = (e) => { if (e.key === "Escape") closeMobile(); };
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") closeMobile();
+    };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
@@ -39,7 +41,6 @@ function BaseHeader() {
   return (
     <header className="sticky top-4 z-40 w-full px-4">
       <div className="mx-auto max-w-7xl">
-
         {/* ── NAV BAR ── */}
         <nav
           aria-label="Main navigation"
@@ -68,17 +69,17 @@ function BaseHeader() {
               </li>
             ))}
           </ul>
-         
+
           {/* Desktop auth area */}
           <div className="hidden items-center gap-2 lg:flex">
-             <ThemeToggle/>
+            <ThemeToggle />
             {isLoggedIn ? (
               <>
                 <Link
                   to="/dashboard"
                   className="inline-flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-hover/80 transition-colors hover:bg-white/10 hover:text-hover focus-visible:outline-2 focus-visible:outline-white"
                 >
-                  {icons.dashboardIcon}
+                  {icons.dashboard}
                   <span>Dashboard</span>
                 </Link>
                 <button
@@ -91,19 +92,11 @@ function BaseHeader() {
               </>
             ) : (
               <>
-             
-               
-                <Link
-                  to="/login"
-                  className="button text-sm text-hover"
-                >
+                <Link to="/login" className="button text-sm text-hover">
                   {icons.login}
                   <span>Login</span>
                 </Link>
-                <Link
-                  to="/register"
-                  className="button text-sm text-hover"
-                >
+                <Link to="/register" className="button text-sm text-hover">
                   {icons.register}
                   <span>Sign up</span>
                 </Link>
@@ -121,9 +114,15 @@ function BaseHeader() {
             className="inline-flex items-center justify-center rounded-md p-2 text-hover/80 transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-white lg:hidden"
           >
             <div aria-hidden="true" className="space-y-1.5">
-              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
-              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-              <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+              <span
+                className={`block h-0.5 w-6 bg-current transition-all duration-300 ${mobileOpen ? "translate-y-2 rotate-45" : ""}`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-current transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`block h-0.5 w-6 bg-current transition-all duration-300 ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`}
+              />
             </div>
           </button>
         </nav>
@@ -139,7 +138,6 @@ function BaseHeader() {
           }`}
         >
           <div className="flex flex-col gap-1 p-4">
-
             {/* Nav links */}
             {NAV_LINKS.map(({ to, label, icon }) => (
               <Link
@@ -154,7 +152,7 @@ function BaseHeader() {
             ))}
 
             <div className="my-2 border-t border-br" />
-            <ThemeToggle/>
+            <ThemeToggle />
 
             {/* Auth area */}
             {isLoggedIn ? (
@@ -195,10 +193,8 @@ function BaseHeader() {
                 </Link>
               </>
             )}
-
           </div>
         </div>
-
       </div>
     </header>
   );

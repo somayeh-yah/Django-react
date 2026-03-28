@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { setUser } from "../utils/auth";
-// import { Loader } from "lucide-react";
+
 import { icons } from "../utils/icons";
 
 // A component that manages a loading state
@@ -21,7 +21,7 @@ const MainWrapper = ({ children }) => {
   }, []);
 
   return (
-    <main className="min-h-screen transition-all duration-500 overflow-y-auto">
+    <main className="min-h-screen transition-all duration-500">
       {loading ? (
         <div className="flex justify-center items-center py-5 px-4 space-x-1">
           {icons.loading} Loading…
